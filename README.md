@@ -10,24 +10,24 @@
 [![OSS](https://img.shields.io/badge/OSS-v2-green.svg)](http://developer.autodesk.com/)
 [![Model-Derivative](https://img.shields.io/badge/Model%20Derivative-v2-green.svg)](http://developer.autodesk.com/)
 
-# Description
+# Описание
 
-This sample is part of the [Learn Forge](http://learnforge.autodesk.io) tutorials.
+Этот пример является частью руководств [Learn Forge] (http://learnforge.autodesk.io).
 
-# Setup
+# Установка
 
-To use this sample, you will need Autodesk developer credentials. Visit the [Forge Developer Portal](https://developer.autodesk.com), sign up for an account, then [create an app](https://developer.autodesk.com/myapps/create). For this new app, use **http://localhost:3000/api/forge/callback/oauth** as the Callback URL, although it is not used on a 2-legged flow. Finally, take note of the **Client ID** and **Client Secret**.
+Чтобы использовать этот образец, вам потребуются учетные данные разработчика Autodesk. Посетите [Портал разработчиков Forge] (https://developer.autodesk.com), зарегистрируйте учетную запись, затем [создайте приложение] (https://developer.autodesk.com/myapps/create). Для этого нового приложения используйте **http://localhost:3000/api/forge/callback/oauth** в качестве URL-адреса обратного вызова, хотя он не используется в двухстороннем потоке. Наконец, обратите внимание на **Client ID** и **Client Secret**.
 
-### Run locally
+### Локальный запуск
 
-Install [NodeJS](https://nodejs.org).
+Установите [NodeJS](https://nodejs.org).
 
-Clone this project or download it. It's recommended to install [GitHub Desktop](https://desktop.github.com/). To clone it via command line, use the following (**Terminal** on MacOSX/Linux, **Git Shell** on Windows):
+Клонируйте этот проект или загрузите его. Рекомендуется установить [GitHub Desktop] (https://desktop.github.com/). Чтобы клонировать его через командную строку, используйте следующее (**Terminal** в MacOSX / Linux,  **Git Shell** в Windows):
 
     git clone https://github.com/autodesk-forge/forge.learning.viewmodels
     git checkout nodejs
 
-To run it, install the required packages, set the enviroment variables with your client ID & Secret and finally start it. Via command line, navigate to the folder where this repository was cloned to and use the following commands:
+Чтобы запустить его, установите необходимые пакеты, установите переменные среды с вашим идентификатором клиента и секретом и, наконец, запустите его. С помощью командной строки перейдите в папку, в которую был клонирован этот репозиторий, и используйте следующие команды:
 
 Mac OSX/Linux (Terminal)
 
@@ -36,42 +36,42 @@ Mac OSX/Linux (Terminal)
     export FORGE_CLIENT_SECRET=<<YOUR CLIENT SECRET>>
     npm start
 
-Windows (use **Node.js command line** from the Start menu)
+Windows (используйте **Node.js command line** из меню Пуск)
 
     npm install
     set FORGE_CLIENT_ID=<<YOUR CLIENT ID FROM DEVELOPER PORTAL>>
     set FORGE_CLIENT_SECRET=<<YOUR CLIENT SECRET>>
     npm start
 
-Open the browser: [http://localhost:3000](http://localhost:3000).
+Откройте браузер: [http://localhost:3000](http://localhost:3000).
 
-## Packages used
+## Использованные пакеты
 
-The [Autodesk Forge](https://www.npmjs.com/package/forge-apis) packages are included by default. Some other non-Autodesk packages are used, including [express](https://www.npmjs.com/package/express) and [multer](https://www.npmjs.com/package/multer) for upload.
+Пакеты [Autodesk Forge] (https://www.npmjs.com/package/forge-apis) включены по умолчанию. Используются некоторые другие пакеты, не принадлежащие Autodesk, включая [express] (https://www.npmjs.com/package/express) и [multer] (https://www.npmjs.com/package/multer) для загрузки.
 
-# Tips & tricks
+# Советы и приёмы
 
-For local development/ testing, consider using the [nodemon](https://www.npmjs.com/package/nodemon) package, which auto-restarts your node application after any modification to your code. To install it, use:
+Для локальной разработки / тестирования рассмотрите возможность использования пакета [nodemon] (https://www.npmjs.com/package/nodemon), который автоматически перезапускает ваше приложение узла после любой модификации вашего кода. Для его установки используйте:
 
     sudo npm install -g nodemon
 
-Then, instead of **npm run dev**, use the following:
+Затем, вместо **npm run dev**, используйте следующее:
 
     npm run nodemon
 
-Which executes **nodemon server.js --ignore www/**, where the **--ignore** parameter indicates that the app should not restart if files under the **www** folder are modified.
+При этом выполняется  **nodemon server.js --ignore www/**, где параметр  **--ignore** указывает, что приложение не должно перезапускаться, если файлы в папке **www** изменены.
 
-## Troubleshooting
+## Устранение неполадок
 
-After installing GitHub Desktop for Windows, on the Git Shell, if you see the ***error setting certificate verify locations*** error, then use the following command:
+Если после установки GitHub Desktop для Windows в оболочке Git вы видите ошибку ***error setting certificate verify locations***, то используйте следующую команду:
 
     git config --global http.sslverify "false"
 
-# License
+# Лицензия
 
-This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-Please see the [LICENSE](LICENSE) file for full details.
+Этот образец лицензирован в соответствии с условиями [Лицензия MIT] (http://opensource.org/licenses/MIT).
+Пожалуйста, просмотрите файл [LICENSE] (ЛИЦЕНЗИЯ) для получения полной информации.
 
-## Written by
+## Автор
 
 Augusto Goncalves [@augustomaia](https://twitter.com/augustomaia), [Forge Partner Development](http://forge.autodesk.com)
