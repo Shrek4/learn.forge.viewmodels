@@ -12,17 +12,17 @@
 
 # Описание
 
-Этот пример является частью руководств [Learn Forge] (http://learnforge.autodesk.io).
+Этот пример является частью руководств [Learn Forge](http://learnforge.autodesk.io).
 
 # Установка
 
-Чтобы использовать этот образец, вам потребуются учетные данные разработчика Autodesk. Посетите [Портал разработчиков Forge] (https://developer.autodesk.com), зарегистрируйте учетную запись, затем [создайте приложение] (https://developer.autodesk.com/myapps/create). Для этого нового приложения используйте **http://localhost:3000/api/forge/callback/oauth** в качестве URL-адреса обратного вызова, хотя он не используется в двухстороннем потоке. Наконец, обратите внимание на **Client ID** и **Client Secret**.
+Чтобы использовать этот образец, вам потребуются учетные данные разработчика Autodesk. Посетите [Портал разработчиков Forge](https://developer.autodesk.com), зарегистрируйте учетную запись, затем [создайте приложение](https://developer.autodesk.com/myapps/create). Для этого нового приложения используйте **http://localhost:3000/api/forge/callback/oauth** в качестве URL-адреса обратного вызова, хотя он не используется в двухстороннем потоке. Наконец, обратите внимание на **Client ID** и **Client Secret**.
 
 ### Локальный запуск
 
 Установите [NodeJS](https://nodejs.org).
 
-Клонируйте этот проект или загрузите его. Рекомендуется установить [GitHub Desktop] (https://desktop.github.com/). Чтобы клонировать его через командную строку, используйте следующее (**Terminal** в MacOSX / Linux,  **Git Shell** в Windows):
+Клонируйте этот проект или загрузите его. Рекомендуется установить [GitHub Desktop](https://desktop.github.com/). Чтобы клонировать его через командную строку, используйте следующее (**Terminal** в MacOSX / Linux,  **Git Shell** в Windows):
 
     git clone https://github.com/autodesk-forge/forge.learning.viewmodels
     git checkout nodejs
@@ -47,11 +47,11 @@ Windows (используйте **Node.js command line** из меню Пуск)
 
 ## Использованные пакеты
 
-Пакеты [Autodesk Forge] (https://www.npmjs.com/package/forge-apis) включены по умолчанию. Используются некоторые другие пакеты, не принадлежащие Autodesk, включая [express] (https://www.npmjs.com/package/express) и [multer] (https://www.npmjs.com/package/multer) для загрузки.
+Пакеты [Autodesk Forge](https://www.npmjs.com/package/forge-apis) включены по умолчанию. Используются некоторые другие пакеты, не принадлежащие Autodesk, включая [express](https://www.npmjs.com/package/express) и [multer](https://www.npmjs.com/package/multer) для загрузки.
 
 # Советы и приёмы
 
-Для локальной разработки / тестирования рассмотрите возможность использования пакета [nodemon] (https://www.npmjs.com/package/nodemon), который автоматически перезапускает ваше приложение узла после любой модификации вашего кода. Для его установки используйте:
+Для локальной разработки / тестирования рассмотрите возможность использования пакета [nodemon](https://www.npmjs.com/package/nodemon), который автоматически перезапускает ваше приложение узла после любой модификации вашего кода. Для его установки используйте:
 
     sudo npm install -g nodemon
 
@@ -69,8 +69,8 @@ Windows (используйте **Node.js command line** из меню Пуск)
 
 # Лицензия
 
-Этот образец лицензирован в соответствии с условиями [Лицензия MIT] (http://opensource.org/licenses/MIT).
-Пожалуйста, просмотрите файл [LICENSE] (ЛИЦЕНЗИЯ) для получения полной информации.
+Этот образец лицензирован в соответствии с условиями [Лицензия MIT](http://opensource.org/licenses/MIT).
+Пожалуйста, просмотрите файл [LICENSE](ЛИЦЕНЗИЯ) для получения полной информации.
 
 ## Автор
 
