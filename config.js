@@ -1,33 +1,33 @@
 /////////////////////////////////////////////////////////////////////
-// Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
+// Авторское право (c) Autodesk, Inc. Все права защищены.
+// Автор Forge Partner Development
 //
-// Permission to use, copy, modify, and distribute this software in
-// object code form for any purpose and without fee is hereby granted,
-// provided that the above copyright notice appears in all copies and
-// that both that copyright notice and the limited warranty and
-// restricted rights notice below appear in all supporting
-// documentation.
+// Разрешение на использование, копирование, изменение и распространение этого программного обеспечения в
+// форма объектного кода для любых целей и без комиссии предоставляется,
+// при условии, что указанное выше уведомление об авторских правах присутствует во всех копиях и
+// что это уведомление об авторских правах и ограниченная гарантия и
+// примечание об ограниченных правах ниже появляется во всех поддерживающих
+// документация.
 //
-// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
-// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
-// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
-// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
-// UNINTERRUPTED OR ERROR FREE.
+// AUTODESK ПРЕДОСТАВЛЯЕТ ДАННУЮ ПРОГРАММУ "КАК ЕСТЬ" И СО ВСЕМИ ОШИБКАМИ.
+// AUTODESK ОТКАЗЫВАЕТСЯ ОТ ЛЮБЫХ ПОДРАЗУМЕВАЕМЫХ ГАРАНТИЙ
+// КОММЕРЧЕСКАЯ ЦЕННОСТЬ ИЛИ ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОГО ИСПОЛЬЗОВАНИЯ. АВТОДЕСК, ИНК.
+// НЕ ГАРАНТИРУЕТ, ЧТО РАБОТА ПРОГРАММЫ БУДЕТ
+// БЕСПЕРЕБОЙНЫЙ ИЛИ БЕЗ ОШИБОК.
 /////////////////////////////////////////////////////////////////////
 
-// Autodesk Forge configuration
+// Конфигурация Autodesk Forge
 module.exports = {
-    // Set environment variables or hard-code here
+    // Здесь задаются переменные среды или жесткий код
     credentials: {
         client_id: process.env.FORGE_CLIENT_ID,
         client_secret: process.env.FORGE_CLIENT_SECRET,
         callback_url: process.env.FORGE_CALLBACK_URL
     },
     scopes: {
-        // Required scopes for the server-side application
+        // Обязательные области для серверного приложения
         internal: ['bucket:create', 'bucket:read', 'data:read', 'data:create', 'data:write'],
-        // Required scope for the client-side viewer
+        // Требуемая область видимости для программы просмотра на стороне клиента
         public: ['viewables:read']
     }
 };
