@@ -1,19 +1,19 @@
 /////////////////////////////////////////////////////////////////////
-// Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
+// Авторское право (c) Autodesk, Inc. Все права защищены.
+// Автор Forge Partner Development
 //
-// Permission to use, copy, modify, and distribute this software in
-// object code form for any purpose and without fee is hereby granted,
-// provided that the above copyright notice appears in all copies and
-// that both that copyright notice and the limited warranty and
-// restricted rights notice below appear in all supporting
-// documentation.
+// Разрешение на использование, копирование, изменение и распространение этого программного обеспечения в
+// форма объектного кода для любых целей и без комиссии предоставляется,
+// при условии, что указанное выше уведомление об авторских правах присутствует во всех копиях и
+// что это уведомление об авторских правах и ограниченная гарантия и
+// примечание об ограниченных правах ниже появляется во всех поддерживающих
+// документация.
 //
-// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
-// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
-// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
-// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
-// UNINTERRUPTED OR ERROR FREE.
+// AUTODESK ПРЕДОСТАВЛЯЕТ ДАННУЮ ПРОГРАММУ "КАК ЕСТЬ" И СО ВСЕМИ ОШИБКАМИ.
+// AUTODESK ОТКАЗЫВАЕТСЯ ОТ ЛЮБЫХ ПОДРАЗУМЕВАЕМЫХ ГАРАНТИЙ
+// КОММЕРЧЕСКАЯ ЦЕННОСТЬ ИЛИ ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОГО ИСПОЛЬЗОВАНИЯ. АВТОДЕСК, ИНК.
+// НЕ ГАРАНТИРУЕТ, ЧТО РАБОТА ПРОГРАММЫ БУДЕТ
+// БЕСПЕРЕБОЙНЫЙ ИЛИ БЕЗ ОШИБОК.
 /////////////////////////////////////////////////////////////////////
 
 const fs = require('fs');
@@ -26,7 +26,7 @@ const config = require('../config');
 
 let router = express.Router();
 
-// Middleware for obtaining a token for each request.
+// Промежуточное ПО для получения токена для каждого запроса.
 router.use(async (req, res, next) => {
     const token = await getInternalToken();
     req.oauth_token = token;
@@ -34,14 +34,14 @@ router.use(async (req, res, next) => {
     next();
 });
 
-// GET /api/forge/oss/buckets - expects a query param 'id'; if the param is '#' or empty,
-// returns a JSON with list of buckets, otherwise returns a JSON with list of objects in bucket with given name.
+// GET /api/forge/oss/buckets - ожидает параметр запроса id; если параметр равен '#' или пуст,
+// возвращает JSON со списком корзин, иначе возвращает JSON со списком объектов в корзине с заданным именем.
 router.get('/buckets', async (req, res, next) => {
     const bucket_name = req.query.id;
     if (!bucket_name || bucket_name === '#') {
         try {
-            // Retrieve up to 100 buckets from Forge using the [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#getBuckets)
-            // Note: if there's more buckets, you should call the getBucket method in a loop, providing different 'startAt' params
+            // Получение до 100 корзин из Forge с помощью [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#getBuckets)
+            // Примечание: если сегментов больше, вы должны вызывать метод getBucket в цикле, предоставляя разные параметры 'startAt'
             const buckets = await new BucketsApi().getBuckets({ limit: 100 }, req.oauth_client, req.oauth_token);
             res.json(buckets.body.items.map((bucket) => {
                 return {
@@ -57,8 +57,8 @@ router.get('/buckets', async (req, res, next) => {
         }
     } else {
         try {
-            // Retrieve up to 100 objects from Forge using the [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#getObjects)
-            // Note: if there's more objects in the bucket, you should call the getObjects method in a loop, providing different 'startAt' params
+            // Получить до 100 объектов из Forge, используя [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#getObjects)
+            // Примечание: если в корзине больше объектов, вы должны вызвать метод getObjects в цикле, предоставляя разные параметры 'startAt'
             const objects = await new ObjectsApi().getObjects(bucket_name, { limit: 100 }, req.oauth_client, req.oauth_token);
             res.json(objects.body.items.map((object) => {
                 return {
@@ -74,14 +74,14 @@ router.get('/buckets', async (req, res, next) => {
     }
 });
 
-// POST /api/forge/oss/buckets - creates a new bucket.
-// Request body must be a valid JSON in the form of { "bucketKey": "<new_bucket_name>" }.
+// POST /api/forge/oss/buckets - создает новое ведро.
+// Тело запроса должно быть корректным JSON в форме { "bucketKey": "<new_bucket_name>" }.
 router.post('/buckets', async (req, res, next) => {
     let payload = new PostBucketsPayload();
     payload.bucketKey = config.credentials.client_id.toLowerCase() + '-' + req.body.bucketKey;
-    payload.policyKey = 'transient'; // expires in 24h
+    payload.policyKey = 'transient'; // истекает через 24 часа
     try {
-        // Create a bucket using [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#createBucket).
+        // Создаем ведро, используя [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#createBucket).
         await new BucketsApi().createBucket(payload, {}, req.oauth_client, req.oauth_token);
         res.status(200).end();
     } catch(err) {
@@ -89,16 +89,16 @@ router.post('/buckets', async (req, res, next) => {
     }
 });
 
-// POST /api/forge/oss/objects - uploads new object to given bucket.
-// Request body must be structured as 'form-data' dictionary
-// with the uploaded file under "fileToUpload" key, and the bucket name under "bucketKey".
+// POST /api/forge/oss/objects - загружает новый объект в заданное ведро.
+// Тело запроса должно быть структурировано как словарь 'form-data'
+// с загруженным файлом под ключом fileToUpload и именем сегмента под ключом bucketKey.
 router.post('/objects', multer({ dest: 'uploads/' }).single('fileToUpload'), async (req, res, next) => {
     fs.readFile(req.file.path, async (err, data) => {
         if (err) {
             next(err);
         }
         try {
-            // Upload an object to bucket using [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#uploadObject).
+            // Загружаем объект в корзину, используя [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#uploadObject).
             await new ObjectsApi().uploadObject(req.body.bucketKey, req.file.originalname, data.length, data, {}, req.oauth_client, req.oauth_token);
             res.status(200).end();
         } catch(err) {
