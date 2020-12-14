@@ -1,19 +1,19 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
+// Автор Forge Partner Development
 //
-// Permission to use, copy, modify, and distribute this software in
-// object code form for any purpose and without fee is hereby granted,
-// provided that the above copyright notice appears in all copies and
-// that both that copyright notice and the limited warranty and
-// restricted rights notice below appear in all supporting
-// documentation.
+// Разрешение на использование, копирование, изменение и распространение этого программного обеспечения в
+// форма объектного кода для любых целей и без комиссии предоставляется,
+// при условии, что указанное выше уведомление об авторских правах присутствует во всех копиях и
+// что это уведомление об авторских правах и ограниченная гарантия и
+// примечание об ограниченных правах ниже появляется во всех поддерживающих
+// документация.
 //
-// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS.
-// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
-// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC.
-// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
-// UNINTERRUPTED OR ERROR FREE.
+// AUTODESK ПРЕДОСТАВЛЯЕТ ДАННУЮ ПРОГРАММУ "КАК ЕСТЬ" И СО ВСЕМИ ОШИБКАМИ.
+// AUTODESK ОТКАЗЫВАЕТСЯ ОТ ЛЮБЫХ ПОДРАЗУМЕВАЕМЫХ ГАРАНТИЙ
+// КОММЕРЧЕСКАЯ ЦЕННОСТЬ ИЛИ ПРИГОДНОСТЬ ДЛЯ ОПРЕДЕЛЕННОГО ИСПОЛЬЗОВАНИЯ. АВТОДЕСК, ИНК.
+// НЕ ГАРАНТИРУЕТ, ЧТО РАБОТА ПРОГРАММЫ БУДЕТ
+// БЕСПЕРЕБОЙНЫЙ ИЛИ БЕЗ ОШИБОК.
 /////////////////////////////////////////////////////////////////////
 
 const { AuthClientTwoLegged } = require('forge-apis');
@@ -21,9 +21,9 @@ const { AuthClientTwoLegged } = require('forge-apis');
 const config = require('../../config');
 
 /**
- * Initializes a Forge client for 2-legged authentication.
- * @param {string[]} scopes List of resource access scopes.
- * @returns {AuthClientTwoLegged} 2-legged authentication client.
+ * Инициализирует клиент Forge для двухсторонней аутентификации.
+ * @param {string[]} scopes Список областей доступа к ресурсам.
+ * @returns {AuthClientTwoLegged} двухсторонний клиент аутентификации.
  */
 function getClient(scopes) {
     const { client_id, client_secret } = config.credentials;
@@ -44,16 +44,16 @@ async function getToken(scopes) {
 }
 
 /**
- * Retrieves a 2-legged authentication token for preconfigured public scopes.
- * @returns Token object: { "access_token": "...", "expires_at": "...", "expires_in": "...", "token_type": "..." }.
+  * Получает двухсторонний токен аутентификации для предварительно настроенных общедоступных областей.
+  * @returns Объект токена: {"access_token": "...", "expires_at": "...", "expires_in": "...", "token_type": "..."}.
  */
 async function getPublicToken() {
     return getToken(config.scopes.public);
 }
 
 /**
- * Retrieves a 2-legged authentication token for preconfigured internal scopes.
- * @returns Token object: { "access_token": "...", "expires_at": "...", "expires_in": "...", "token_type": "..." }.
+ * Получает двухсторонний маркер аутентификации для предварительно настроенных внутренних областей.
+ * @returns Объект токена: {"access_token": "...", "expires_at": "...", "expires_in": "...", "token_type": "..."}.
  */
 async function getInternalToken() {
     return getToken(config.scopes.internal);
