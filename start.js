@@ -21,6 +21,7 @@ const express = require('express');
 
 const PORT = process.env.PORT || 3000;
 const config = require('./config');
+//Выводит ошибку, если айди и секрет не заданы
 if (config.credentials.client_id == null || config.credentials.client_secret == null) {
     console.error('Missing FORGE_CLIENT_ID or FORGE_CLIENT_SECRET env. variables.');
     return;
